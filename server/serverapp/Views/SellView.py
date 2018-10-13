@@ -18,6 +18,6 @@ def sell(request):
     item = get_existing_item(rw.item_id())
     with transaction.atomic():
         remove_user_item(user, item)
-        user.credit += item.price
+        user.credit = round(user.credit + item.price, 2)
         user.save()
     return SuccessResponse()
