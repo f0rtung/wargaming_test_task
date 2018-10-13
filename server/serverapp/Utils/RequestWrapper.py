@@ -1,10 +1,15 @@
 class RequestWrapper:
     def __init__(self, request):
-        self._post_params = request.POST
+        if request.method == 'POST':
+            self._params = request.POST
+        elif request.method == 'GET':
+            self._params = request.GET
+        else:
+            raise ValueError("Unsupported request type: ", request.method)
 
     def _get_required_str(self, key):
         try:
-            return self._post_params[key]
+            return self._params[key]
         except KeyError:
             raise ValueError("Parameter '{}' is required".format(key))
 
