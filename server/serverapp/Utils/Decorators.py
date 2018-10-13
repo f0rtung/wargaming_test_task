@@ -2,7 +2,7 @@ import json
 from functools import wraps
 from django.http import JsonResponse
 
-from ..Responses.BaseResponses import BaseResponse, ErrorResponse
+from ..Responses.BaseResponses import BaseResponse, ErrorResponse, SuccessResponse
 
 
 def json_response(func):
@@ -11,7 +11,8 @@ def json_response(func):
         try:
             result = func(request, *args, **kwargs)
             if isinstance(result, dict):
-                response = result
+                response = SuccessResponse().as_dict()
+                response.update(result)
             elif issubclass(type(result), BaseResponse):
                 response = result.as_dict()
             else:
