@@ -1,8 +1,6 @@
 from django.db import models
 from django.core.exceptions import ObjectDoesNotExist
 
-from ..Utils.Validators import validate_decimals
-
 
 def all_items():
     return ItemsModel.objects.all()
@@ -17,7 +15,7 @@ def get_existing_item(item_id):
 
 class ItemsModel(models.Model):
     name = models.CharField(max_length=1024)
-    price = models.FloatField(validators=[validate_decimals])
+    price = models.FloatField()
 
     class Meta:
         db_table = 'items'

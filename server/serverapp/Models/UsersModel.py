@@ -1,7 +1,6 @@
 from django.db import models
 from django.core.exceptions import ObjectDoesNotExist
 
-from ..Utils.Validators import validate_decimals
 from ..Models.ServerSettingsModel import random_start_credit
 
 
@@ -23,7 +22,7 @@ def get_existing_user(user_id):
 
 class UsersModel(models.Model):
     nickname = models.CharField(max_length=1024)
-    credit = models.FloatField(validators=[validate_decimals])
+    credit = models.FloatField()
 
     class Meta:
         db_table = 'users'
