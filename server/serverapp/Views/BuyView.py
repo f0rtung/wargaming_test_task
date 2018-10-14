@@ -21,6 +21,5 @@ def buy(request):
         return NotEnoughMoneyResponse(user, item)
     with transaction.atomic():
             create_user_item(user, item)
-            user.credit = round(user.credit - item.price, 2)
-            user.save()
+            user.decrease_credit(item.price)
     return SuccessResponse()

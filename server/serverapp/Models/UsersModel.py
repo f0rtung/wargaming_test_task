@@ -36,3 +36,13 @@ class UsersModel(models.Model):
             'nickname': self.nickname,
             'credit': self.credit
         }
+
+    def _update_credit(self, value):
+        self.credit = round(value, 2)
+        self.save(update_fields=["credit"])
+
+    def increase_credit(self, value):
+        self._update_credit(self.credit + value)
+
+    def decrease_credit(self, value):
+        self._update_credit(self.credit - value)
