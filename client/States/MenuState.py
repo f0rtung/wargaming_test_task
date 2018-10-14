@@ -36,17 +36,13 @@ class MenuState(StateWithUserID):
         if self._action == 1:
             self.state_machine.curr_state = self.state_machine.all_items_state
         if self._action == 2:
-            self.state_machine.user_items_state.set_user_id(self.get_user_id())
             self.state_machine.curr_state = self.state_machine.user_items_state
         if self._action == 3:
-            self.state_machine.sell_item_state.set_user_id(self.get_user_id())
             self.state_machine.curr_state = self.state_machine.sell_item_state
         if self._action == 4:
-            self.state_machine.buy_item_state.set_user_id(self.get_user_id())
             self.state_machine.curr_state = self.state_machine.buy_item_state
         if self._action == 5:
-            self.state_machine.balance_state.set_user_id(self.get_user_id())
             self.state_machine.curr_state = self.state_machine.balance_state
         if self._action == 0:
-            self.reset_user_id()
+            self.state_machine.reset_user_id()
             self.state_machine.curr_state = self.state_machine.login_state

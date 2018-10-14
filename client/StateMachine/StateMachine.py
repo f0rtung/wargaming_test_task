@@ -17,6 +17,22 @@ class StateMachine:
         self.balance_state = UserBalanceState(url, self)
         self.curr_state = self.login_state
 
+        self._states_with_user_id = [
+            self.menu_state,
+            self.user_items_state,
+            self.sell_item_state,
+            self.buy_item_state,
+            self.balance_state
+        ]
+
+    def set_user_id(self, user_id):
+        for state in self._states_with_user_id:
+            state.set_user_id(user_id)
+
+    def reset_user_id(self):
+        for state in self._states_with_user_id:
+            state.reset_user_id()
+
     def run(self):
         while True:
             try:

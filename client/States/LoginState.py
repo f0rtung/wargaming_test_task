@@ -28,5 +28,6 @@ class LoginState(State):
         print()
 
     def change_state(self):
-        self.state_machine.menu_state.set_user_id(self._json_response['user']['id'])
+        user_id = self._json_response['user']['id']
+        self.state_machine.set_user_id(user_id)
         self.state_machine.curr_state = self.state_machine.menu_state
