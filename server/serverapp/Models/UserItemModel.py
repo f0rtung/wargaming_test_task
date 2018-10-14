@@ -13,9 +13,9 @@ def user_items(user):
 def remove_user_item(user, item):
     try:
         user_item = UserItemModel.objects.get(user=user, item=item)
+        user_item.delete()
     except ObjectDoesNotExist:
         raise ValueError("User '{}' has no item '{}'".format(user.nickname, item.name))
-    user_item.delete()
 
 
 def create_user_item(user, item):
