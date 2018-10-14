@@ -2,7 +2,6 @@ from ..Models.UserItemModel import user_items
 from ..Utils.Decorators import json_response
 from ..Models.UsersModel import get_existing_user
 from ..Utils.RequestWrapper import RequestWrapper
-
 from ..Responses.UserWithItemsResponse import UserWithItemsResponse
 
 
