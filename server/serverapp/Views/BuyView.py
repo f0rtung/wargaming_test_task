@@ -17,11 +17,10 @@ def buy(request):
     rw = RequestWrapper(request)
     user = get_existing_user(rw.user_id())
     item = get_existing_item(rw.item_id())
+    if user.credit < item.price:
+        return NotEnoughMoneyResponse(user, item)
     with transaction.atomic():
-        if user.credit > item.price:
             create_user_item(user, item)
             user.credit = round(user.credit - item.price, 2)
             user.save()
-        else:
-            return NotEnoughMoneyResponse(user, item)
     return SuccessResponse()
