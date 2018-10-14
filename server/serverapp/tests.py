@@ -99,19 +99,19 @@ def _test_without_param_user_id(test_self, url):
 
 class SellViewTests(TestCase):
 
-    def test_without_params(self):
+    def test_sell_without_params(self):
         _test_without_params(self, '/server/sell')
 
-    def test_with_invalid_user_id(self):
+    def test_sell_with_invalid_user_id(self):
         _test_with_invalid_user_id(self, '/server/sell')
 
-    def test_without_param_item_id(self):
+    def test_sell_without_param_item_id(self):
         _test_without_param_item_id(self, '/server/sell')
 
-    def test_without_param_user_id(self):
+    def test_sell_without_param_user_id(self):
         _test_without_param_user_id(self, '/server/sell')
 
-    def test_with_invalid_param_item_id(self):
+    def test_sell_with_invalid_param_item_id(self):
         _test_with_invalid_param_item_id(self, '/server/sell')
 
     def test_sell_user_has_no_item(self):
@@ -155,19 +155,19 @@ class SellViewTests(TestCase):
 
 
 class BuyViewTests(TestCase):
-    def test_without_params(self):
+    def test_buy_without_params(self):
         _test_without_params(self, '/server/buy')
 
-    def test_with_invalid_user_id(self):
+    def test_buy_with_invalid_user_id(self):
         _test_with_invalid_user_id(self, '/server/buy')
 
-    def test_without_param_item_id(self):
+    def test_buy_without_param_item_id(self):
         _test_without_param_item_id(self, '/server/buy')
 
-    def test_without_param_user_id(self):
+    def test_buy_without_param_user_id(self):
         _test_without_param_user_id(self, '/server/buy')
 
-    def test_with_invalid_param_item_id(self):
+    def test_buy_with_invalid_param_item_id(self):
         _test_with_invalid_param_item_id(self, '/server/buy')
 
     def test_buy_not_enough_money(self):
